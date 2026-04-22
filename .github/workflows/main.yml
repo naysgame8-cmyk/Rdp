@@ -76,15 +76,15 @@ jobs:
 
         run: |
 
-          $password = "admin@123"
+          $password = "youcef@11"
 
           $securePass = ConvertTo-SecureString $password -AsPlainText -Force
 
 
 
-          if (-not (Get-LocalUser -Name "TOOLBOXLAP" -ErrorAction SilentlyContinue)) {
+          if (-not (Get-LocalUser -Name "Youssef" -ErrorAction SilentlyContinue)) {
 
-              New-LocalUser -Name "TOOLBOXLAP" -Password $securePass -AccountNeverExpires
+              New-LocalUser -Name "Youssef" -Password $securePass -AccountNeverExpires
 
           }
 
@@ -92,9 +92,9 @@ jobs:
 
           Add-LocalGroupMember -Group "Remote Desktop Users" -Member "TOOLBOXLAP"
 
-          echo "RDP_CREDS=User: TOOLBOXLAP | Password: $password" >> $env:GITHUB_ENV
+          echo "RDP_CREDS=User: Youssef | Password: $password" >> $env:GITHUB_ENV
 
-          if (-not (Get-LocalUser -Name "TOOLBOXLAP")) {
+          if (-not (Get-LocalUser -Name "Youssef")) {
 
               Write-Error "User creation failed"
 
