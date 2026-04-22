@@ -108,7 +108,7 @@ jobs:
 
         run: |
 
-          $tsUrl = "https://pkgs.tailscale.com/stable/tailscale-setup-1.82.0-amd64.msi"
+          $tsUrl = "https://pkgs.tailscale.com/stable/tailscale-setup-1.96.3-amd64.msi"
 
           $installerPath = "$env:TEMP\tailscale.msi"
 
@@ -186,9 +186,7 @@ jobs:
 
           Write-Host "Username: Youssef"
 
-          Write-Host "Password: Youssef@12345"
-
-          Write-Host "Powered by https://www.toolboxlap.xyz/"
+          Write-Host "Password: youcef@11"
 
           Write-Host "========= All rights reserved =========`n"
 
