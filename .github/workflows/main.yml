@@ -88,9 +88,9 @@ jobs:
 
           }
 
-          Add-LocalGroupMember -Group "Administrators" -Member "TOOLBOXLAP"
+          Add-LocalGroupMember -Group "Administrators" -Member "Youssef"
 
-          Add-LocalGroupMember -Group "Remote Desktop Users" -Member "TOOLBOXLAP"
+          Add-LocalGroupMember -Group "Remote Desktop Users" -Member "Youssef"
 
           echo "RDP_CREDS=User: Youssef | Password: $password" >> $env:GITHUB_ENV
 
