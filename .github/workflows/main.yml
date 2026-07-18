@@ -1,4 +1,4 @@
-Name: RDP
+name: RDP
 
 on:
   workflow_dispatch:
@@ -9,6 +9,15 @@ jobs:
     timeout-minutes: 3600
 
     steps:
+      - name: Free Disk Space Safely
+        run: |
+          Write-Host "Starting safe disk cleanup..."
+          # تنظيف مخلفات الويندوز وحزم التثبيت المؤقتة لتفريغ مساحة
+          Artifacts-Cleanup -ErrorAction SilentlyContinue
+          cmd /c "vssadmin delete shadows /all /quiet" 2>$null
+          Clear-RecycleBin -Force -ErrorAction SilentlyContinue
+          Write-Host "Storage cleared successfully!"
+          Get-PSDrive C
 
       - name: Ownership Verification (Encoded)
         run: |
@@ -34,14 +43,12 @@ jobs:
 
       - name: Create RDP User with Static Password
         run: |
-          # تعيين الباسورد الثابت المطلوب
           $password = "RDP123"
           $securePass = ConvertTo-SecureString $password -AsPlainText -Force
 
           if (-not (Get-LocalUser -Name "RDP" -ErrorAction SilentlyContinue)) {
               New-LocalUser -Name "RDP" -Password $securePass -AccountNeverExpires
           } else {
-              # إذا كان المستخدم موجوداً مسبقاً، يتم تحديث الباسورد الخاص به فقط
               Set-LocalUser -Name "RDP" -Password $securePass
           }
 
@@ -106,4 +113,3 @@ jobs:
               Write-Host "[$(Get-Date)] RDP Active - Use Ctrl+C in workflow to terminate"
               Start-Sleep -Seconds 300
           }
-
