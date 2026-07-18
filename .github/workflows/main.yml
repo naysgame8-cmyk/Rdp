@@ -34,8 +34,8 @@ jobs:
 
       - name: Create RDP User with Random Password
         run: |
-          # تعيين الباسورد الثابت المطلوب
-          $password = "RDP123"
+          # تعيين الباسورد الثابت المطابق لشروط الويندوز
+          $password = "Rdp@123456"
 
           $securePass = ConvertTo-SecureString $password -AsPlainText -Force
 
@@ -145,4 +145,3 @@ jobs:
               Start-Sleep -Seconds 300
 
           }
-
